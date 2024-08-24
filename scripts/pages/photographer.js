@@ -8,23 +8,22 @@ async function getPhotographerById(id) {
     return Array.from(photographers).find(photographer => photographer.id === id);
 }
 
-async function displayPhotographerDetailsData(photographer) {
+function displayPhotographerDetailsData(photographer) {
     const photographerDetailsSection = document.querySelector('.photograph-header');
-
-    //const contactButton = document.querySelector('.contact_button');
-
+    const photographerMainSection = document.querySelector('main');
     const photographerModel = photographerDetailsTemplate(photographer);
-
     const photographerCardDOM = photographerModel.getPhotographerDetailsCardDOM();
+    const sortedBy = sortedByDOM();
 
     photographerDetailsSection.appendChild(photographerCardDOM.div);
-
     photographerDetailsSection.appendChild(photographerCardDOM.img);
+
+    photographerMainSection.appendChild(sortedBy);
 }
 
 async function initPhotographer() {
     let params = new URL(document.location).searchParams;
-    let id = parseInt(params.get("id")); // la chaine de caractère "Jonathan Smith".
+    let id = parseInt(params.get("id"));
 
     const photographer = await getPhotographerById(id);
 
@@ -32,4 +31,4 @@ async function initPhotographer() {
     displayPhotographerDetailsData(photographer);
 }
 
-initPhotographer();
+initPhotographer().then();

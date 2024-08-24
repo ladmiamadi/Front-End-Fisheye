@@ -5,11 +5,14 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
     padding: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+main {
+    margin: 0 100px;
 }
 
 .photograph-header :nth-child(3) {
@@ -47,6 +50,72 @@
     font-size: 24px;
     line-height: 31px;
 }
+
+.sorted-by {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    gap: 30px;
+}
+
+.sorted-by h4{
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.arrow {
+    color: white;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+/************** dropdown sortedby **/
+.drop-button {
+    background-color: #901C1C;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #901C1C;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #DB8876;}
+
+/* Show the dropdown menu on hover */
+.show {display:block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .drop-button {background-color: #DB8876;}
+
+/************************************/
 
 .modal {
     border-radius: 5px;
