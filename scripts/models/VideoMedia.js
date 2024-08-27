@@ -1,0 +1,45 @@
+class VideoMedia {
+    constructor(data, name) {
+        this._id = data.id;
+        this._photographerId = data.photographerId;
+        this._title = data.title;
+        this._media = data.video;
+        this._likes = data.likes;
+        this._date = data.date;
+        this._price = data.price;
+        this._name = name;
+    }
+
+
+    get id() {
+        return this._id;
+    }
+
+    get name() {
+        return this._name.split(' ')[0];
+    }
+
+    get photographerId() {
+        return this._photographerId;
+    }
+
+    get title() {
+        return this._title;
+    }
+
+    get media() {
+        return `<video controls><source src=assets/photographers/${this.name}/${this._media} type=video/mp4/></video>`;
+    }
+
+    get likes() {
+        return this._likes;
+    }
+
+    get date() {
+        return this._date;
+    }
+
+    get price() {
+        return this._price;
+    }
+}

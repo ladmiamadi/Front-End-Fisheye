@@ -29,9 +29,8 @@ function photographerDetailsTemplate(data) {
         img.setAttribute("src", picture);
         img.setAttribute('alt', `Photographe ${name}`)
 
-
         return {div, img};
     }
 
-    return { name, picture, id, address, tagline, pricing, getPhotographerDetailsCardDOM }
+    return { name, picture, id, address, tagline, pricing, getPhotographerDetailsCardDOM, getPhotographerMediaDOM }
 }

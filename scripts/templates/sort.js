@@ -1,9 +1,3 @@
-function toggleDropdown() {
-    let dropdown = document.querySelector('.dropdown-content');
-    dropdown.classList.toggle('show');
-}
-
-
 function sortedByDOM () {
     const div = document.createElement( 'div' );
     div.classList.add('sorted-by');

@@ -1,4 +1,3 @@
-//Mettre le code JavaScript lié à la page photographer.html
 async function getPhotographerById(id) {
     let response = await fetch("./data/photographers.json");
     let result = await response.json();
@@ -8,17 +7,37 @@ async function getPhotographerById(id) {
     return Array.from(photographers).find(photographer => photographer.id === id);
 }
 
-function displayPhotographerDetailsData(photographer) {
+async function getPhotographerMedia(id, name) {
+    let response = await fetch("./data/photographers.json");
+    let result = await response.json();
+
+    const { media } = result;
+
+    return media.filter(element => element.photographerId === id)
+                .map(media => new MediaFactory(media, name));
+}
+
+async function displayPhotographerDetailsData(photographer) {
     const photographerDetailsSection = document.querySelector('.photograph-header');
     const photographerMainSection = document.querySelector('main');
+    const mediaSection = document.querySelector('.media-section');
     const photographerModel = photographerDetailsTemplate(photographer);
     const photographerCardDOM = photographerModel.getPhotographerDetailsCardDOM();
     const sortedBy = sortedByDOM();
+    const media = await getPhotographerMedia(photographer.id, photographer.name);
+
+    const div = document.createElement('div');
+    div.classList.add('media.section');
+
+    console.log(media);
 
     photographerDetailsSection.appendChild(photographerCardDOM.div);
     photographerDetailsSection.appendChild(photographerCardDOM.img);
-
     photographerMainSection.appendChild(sortedBy);
+
+    media.forEach(media => {
+        mediaSection.appendChild(getPhotographerMediaDOM(media));
+    })
 }
 
 async function initPhotographer() {
@@ -28,7 +47,7 @@ async function initPhotographer() {
     const photographer = await getPhotographerById(id);
 
     console.log(photographer);
-    displayPhotographerDetailsData(photographer);
+    await displayPhotographerDetailsData(photographer);
 }
 
 initPhotographer().then();
