@@ -27,7 +27,7 @@ class ImageMedia {
     }
 
     get media() {
-        return `<img src=assets/photographers/${this.name}/${this._media}  alt=${this.title}/>`;
+        return `<img src=assets/photographers/${this.name}/${this._media}/>`;
     }
 
     get likes() {
