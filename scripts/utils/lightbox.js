@@ -32,7 +32,7 @@ function showSlide(n) {
     lightboxContent.setAttribute('data-currentId', targetSlide.id);
 }
 
-setInterval(() => showSlide(1), 3000);
+//setInterval(() => showSlide(1), 3000);
 
 document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowRight') {
