@@ -28,7 +28,7 @@ class VideoMedia {
     }
 
     get media() {
-        return `<video controls height="300" width="350"><source src=assets/photographers/${this.name}/${this._media} type=video/mp4></video>`;
+        return `<video height="300" width="350"><source src=assets/photographers/${this.name}/${this._media} type=video/mp4></video>`;
     }
 
     get likes() {

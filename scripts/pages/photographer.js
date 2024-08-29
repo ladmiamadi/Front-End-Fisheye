@@ -25,6 +25,7 @@ async function displayPhotographerDetailsData(photographer) {
     const photographerCardDOM = photographerModel.getPhotographerDetailsCardDOM();
     const sortedBy = sortedByDOM();
     const media = await getPhotographerMedia(photographer.id, photographer.name);
+    const lightbox = getPhotographerLightbox(media);
 
     const div = document.createElement('div');
     div.classList.add('media.section');
@@ -38,6 +39,8 @@ async function displayPhotographerDetailsData(photographer) {
     media.forEach(media => {
         mediaSection.appendChild(getPhotographerMediaDOM(media));
     })
+
+    photographerMainSection.appendChild(lightbox);
 }
 
 async function initPhotographer() {

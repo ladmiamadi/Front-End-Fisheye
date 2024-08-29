@@ -1,4 +1,8 @@
 function getPhotographerMediaDOM(media) {
+    const a = document.createElement('a');
+    a.setAttribute('href', '#');
+    a.onclick = () => openLightbox(media.id);
+
     const article = document.createElement( 'article' );
     article.setAttribute('role', 'listitem');
     article.classList.add('media-card');
@@ -23,5 +27,7 @@ function getPhotographerMediaDOM(media) {
     div.appendChild(likes);
     article.appendChild(div);
 
-    return (article);
+    a.appendChild(article)
+
+    return (a);
 }
