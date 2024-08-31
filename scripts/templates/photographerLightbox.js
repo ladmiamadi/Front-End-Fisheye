@@ -1,4 +1,4 @@
-function getPhotographerLightbox(media) {
+function getPhotographerLightboxDOM(media) {
     const div = document.createElement('div');
     div.id = 'lightbox-modal';
 

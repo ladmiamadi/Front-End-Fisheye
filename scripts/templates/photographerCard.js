@@ -30,13 +30,8 @@ function photographerTemplate(data) {
         p.classList.add('pricing')
 
         const a = document.createElement('a');
-        a.setAttribute('href', href);
-
-        a.appendChild(img);
-        a.appendChild(h2);
-        a.appendChild(h3);
-        a.appendChild(description);
-        a.appendChild(p);
+        a.href = href;
+        a.append(img, h2, h3, description, p);
 
         article.appendChild(a);
 
