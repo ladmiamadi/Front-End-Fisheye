@@ -2,7 +2,7 @@ function getPhotographerMediaDOM(media) {
     const article = document.createElement( 'article' );
     article.setAttribute('role', 'listitem');
     article.classList.add('media-card');
-    article.id = media.id;
+    //article.id = media.id;  remplacer ca par autre chose*********
 
     const a = document.createElement('a');
     a.setAttribute('href', '#');
@@ -26,6 +26,7 @@ function getPhotographerMediaDOM(media) {
 
     const likeCount = document.createElement('span');
     likeCount.classList.add('like-count');
+    likeCount.id = 'like' + media.id;
     likeCount.innerText = media.likes;
 
     likes.append(likeCount, heart);

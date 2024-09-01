@@ -1,13 +1,4 @@
 function updatePhotographerLikesCounter() {
-    /*const likes = document.querySelectorAll('.total-likes');
-
-    const totalLikes = Array.from(likes).map(like => parseInt(like.textContent)).reduce((acc, item) => {
-        return acc + item;
-    }, 0);
-
-    console.log(totalLikes)
-
-    likes.textContent = totalLikes.toString();*/
     const likes = document.querySelectorAll('.like-count');
 
     const totalLikes = Array.from(likes).map(like => parseInt(like.textContent)).reduce((acc, item) => {
@@ -23,7 +14,7 @@ function updatePhotographerLikesCounter() {
 function incrementLike(media) {
     const updatedLike = media.likes + 1;
 
-    const currentLike = document.getElementById(media.id).querySelector('.like-count');
+    const currentLike = document.getElementById(`like${media.id}`);
 
     currentLike.textContent = updatedLike.toString();
     updatePhotographerLikesCounter();

@@ -1,4 +1,5 @@
 function getPhotographerLightboxDOM(media) {
+    // Création des éléments principaux
     const div = document.createElement('div');
     div.id = 'lightbox-modal';
 
@@ -20,8 +21,10 @@ function getPhotographerLightboxDOM(media) {
     lightboxContent.classList.add('lightbox-content');
     lightboxContent.dataset.currentId = media[0].id;
 
+    // Ajout des éléments au div principal
     div.append(span, next, prev, lightboxContent);
 
+    // Création et ajout des slides
     media.forEach(item => {
         const slide = document.createElement('div');
         slide.classList.add('slide');

@@ -43,5 +43,3 @@ document.addEventListener('keydown', function(e) {
         closeLightbox();
     }
 });
-
-
