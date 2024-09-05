@@ -1,43 +1,42 @@
 function getPhotographerLightboxDOM(media) {
-    // Création des éléments principaux
-    const div = document.createElement('div');
-    div.id = 'lightbox-modal';
+	if(!document.getElementById("lightbox-modal")) {
+		const div = document.createElement("div");
+		div.id = "lightbox-modal";
 
-    const span = document.createElement('span');
-    span.innerHTML = '<i class="fa-solid fa-x"></i>';
-    span.classList.add('close-lightbox');
-    span.onclick = closeLightbox;
+		const span = document.createElement("span");
+		span.innerHTML = "<i class=\"fa-solid fa-x\"></i>";
+		span.classList.add("close-lightbox");
+		span.onclick = closeLightbox;
 
-    const next = document.createElement('span');
-    const prev = document.createElement('span');
-    next.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
-    prev.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
-    next.classList.add('next');
-    prev.classList.add('prev');
-    next.onclick = () => showSlide(1);
-    prev.onclick = () => showSlide(-1);
+		const next = document.createElement("span");
+		const prev = document.createElement("span");
+		next.innerHTML = "<i class=\"fa-solid fa-chevron-right\"></i>";
+		prev.innerHTML = "<i class=\"fa-solid fa-chevron-left\"></i>";
+		next.classList.add("next");
+		prev.classList.add("prev");
+		next.onclick = () => showSlide(1);
+		prev.onclick = () => showSlide(-1);
 
-    const lightboxContent = document.createElement('div');
-    lightboxContent.classList.add('lightbox-content');
-    lightboxContent.dataset.currentId = media[0].id;
+		const lightboxContent = document.createElement("div");
+		lightboxContent.classList.add("lightbox-content");
+		lightboxContent.dataset.currentId = media[0].id;
 
-    // Ajout des éléments au div principal
-    div.append(span, next, prev, lightboxContent);
+		div.append(span, next, prev, lightboxContent);
 
-    // Création et ajout des slides
-    media.forEach(item => {
-        const slide = document.createElement('div');
-        slide.classList.add('slide');
-        slide.id = item.id;
+		media.forEach(item => {
+			const slide = document.createElement("div");
+			slide.classList.add("slide");
+			slide.id = item.id;
 
-        const title = document.createElement('h3');
-        title.textContent = item.title;
+			const title = document.createElement("h3");
+			title.textContent = item.title;
 
-        slide.innerHTML = item.media;
-        slide.appendChild(title);
+			slide.innerHTML = item.media;
+			slide.appendChild(title);
 
-        lightboxContent.appendChild(slide);
-    });
+			lightboxContent.appendChild(slide);
+		});
 
-    return div;
+		return div;
+	}
 }

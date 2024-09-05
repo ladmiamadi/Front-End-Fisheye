@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "eslint": "^9.9.1"
+  },
+  "scripts": {
+    "dev": "http-server",
+    "lint": "eslint **/*.js"
+  }
+}
