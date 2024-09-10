@@ -33,23 +33,18 @@ async function displayPhotographerDetailsData(photographer) {
 	const media = await getPhotographerMedia(photographer.id, photographer.name);
 
 	const sortedBy = sortedByDOM(media);
+
 	const likesCounter = getPhotographerLikes(media);
 
 	const div = document.createElement("div");
 	div.classList.add("media.section");
+	div.role = "list";
 
 	console.log(media);
 
 	photographerDetailsSection.appendChild(photographerCardDOM.div);
 	photographerDetailsSection.appendChild(photographerCardDOM.img);
 	photographerMainSection.appendChild(sortedBy);
-
-	media.forEach(media => {
-		mediaSection.appendChild(getPhotographerMediaDOM(media));
-	});
-
-	//const lightbox = getPhotographerLightboxDOM(media);
-	//photographerMainSection.appendChild(lightbox);
 
 	photographerMainSection.appendChild(getPhotographerLikesDOM(likesCounter, photographer.price));
 }

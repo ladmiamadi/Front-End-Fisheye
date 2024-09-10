@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
       <link href="css/style.css" rel="stylesheet" type="text/css" />
       <meta charset="utf-8">
@@ -9,35 +9,45 @@
       <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <a href="index.html" title="Page d'accueil"><img src="assets/images/logo.png" class="logo"  alt="Logo Fisheye"/></a>
+    <header role="banner">
+        <h1 aria-label="Fisheye">
+            <a href="index.html" title="Page d'accueil"><img src="assets/images/logo.png" class="logo"  alt="Logo Fisheye"/></a>
+        </h1>
     </header>
-    <main>
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <main aria-hidden="false" id="photographerMainSection">
+      <div class="photograph-header" role="heading" aria-level="2">
+        <button class="contact_button" onclick="displayModal()" id="openModalContact">Contactez-moi</button>
       </div>
       <div class="media-section"></div>
     </main>
-    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="contactFormTitle">
-        <div class="modal">
+    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="contactFormTitle" aria-labelledby="contactFormTitle">
+        <div class="modal" aria-labelledby="contactFormTitle" role="group">
             <header>
                 <h2 id="contactFormTitle">Contactez-moi</h2>
-                <img src="assets/icons/close.svg" onclick="closeModal()"  alt="Fermer le formulaire"/>
+                <img src="assets/icons/close.svg" onclick="closeModal()"
+                     alt="Fermer le formulaire"
+                     role="button" aria-label="Fermer"
+                     id="closeModalContact"
+                />
             </header>
 				<form id="contact-form">
-					<div>
+					<div aria-labelledby="first">
 						<label for="first">Prénom</label>
-						<input type="text" id="first" name="first" required aria-required="true"/>
+						<input type="text" id="first" name="first" required aria-required="true" placeholder="Votre prénom"/>
 					</div>
-                  <div>
+                  <div aria-labelledby="last">
                     <label for="last">Nom</label>
-                    <input type="text" id="last" name="last" required aria-required="true"/>
+                    <input type="text" id="last" name="last" required aria-required="true" placeholder="Votre nom"/>
                   </div>
-                  <div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required aria-required="true"/>
+                  <div aria-labelledby="email">
+                      <label for="email">Email</label>
+                      <input type="email" id="email" name="email" required aria-required="true"
+                             placeholder="jhondoe@gmail.com"
+                             aria-describedby="email-format"
+                      />
+                      <span id="email-format" class="hidden">jhondoe@gmail.com</span>
                   </div>
-                  <div>
+                  <div aria-labelledby="message">
                     <label for="message">Message</label>
                     <textarea id="message" name="message" required aria-required="true"></textarea>
                   </div>

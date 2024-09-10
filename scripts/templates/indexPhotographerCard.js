@@ -8,12 +8,12 @@ function photographerTemplate(data) {
 
 	function getUserCardDOM() {
 		const article = document.createElement( "article" );
-		article.setAttribute("role", "listitem");
+		article.role = "listitem";
 
 		const img = document.createElement( "img");
 		img.classList.add("photographer-card-img");
-		img.setAttribute("src", picture);
-		img.setAttribute("alt", `Photographe ${name}`);
+		img.src = picture;
+		img.alt = `Photographe ${name}`;
 
 		const h2 = document.createElement( "h2");
 		h2.textContent = name;
@@ -31,6 +31,7 @@ function photographerTemplate(data) {
 
 		const a = document.createElement("a");
 		a.href = href;
+		a.ariaLabel = "Détails du photographe";
 		a.append(img, h2, h3, description, p);
 
 		article.appendChild(a);

@@ -7,6 +7,7 @@ function photographerDetailsTemplate(data) {
 
 	function getPhotographerDetailsCardDOM() {
 		const div = document.createElement( "div");
+		div.ariaLabel = "Informations sur le photographe";
 
 		const h2 = document.createElement( "h2");
 		h2.textContent = name;
@@ -26,8 +27,8 @@ function photographerDetailsTemplate(data) {
 
 		const img = document.createElement("img");
 		img.classList.add("photographer-card-img");
-		img.setAttribute("src", picture);
-		img.setAttribute("alt", `Photographe ${name}`);
+		img.src = picture;
+		img.alt = `Photographe ${name}`;
 
 		return {div, img};
 	}

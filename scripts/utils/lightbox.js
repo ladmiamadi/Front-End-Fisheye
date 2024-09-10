@@ -1,12 +1,26 @@
 function openLightbox(id) {
-	document.getElementById("lightbox-modal").style.display = "block";
+	const mainSection = document.getElementById("photographerMainSection");
+	mainSection.setAttribute("aria-hidden", "true");
+
+	const lightbox = document.getElementById("lightbox-modal");
+	lightbox.style.display = "block";
+	lightbox.setAttribute("aria-hidden", "false");
 	document.querySelector(".lightbox-content").setAttribute("data-currentId", id);
+
+	document.body.classList.add("no-scroll");
 
 	showSlide(0);
 }
 
 function closeLightbox() {
-	document.getElementById("lightbox-modal").style.display = "none";
+	const mainSection = document.getElementById("photographerMainSection");
+	mainSection.setAttribute("aria-hidden", "false");
+
+	const lightbox = document.getElementById("lightbox-modal");
+	lightbox.style.display = "none";
+	lightbox.setAttribute("aria-hidden", "true");
+
+	document.body.classList.remove("no-scroll");
 }
 
 function showSlide(n) {
@@ -20,6 +34,7 @@ function showSlide(n) {
 
 	// Définir le slide suivant ou précédent ou boucler
 	let targetSlide;
+
 	if (n === 1) {
 		targetSlide = currentSlide.nextElementSibling || slides[0];
 	} else if (n === -1) {
@@ -29,17 +44,44 @@ function showSlide(n) {
 	}
 
 	targetSlide.style.display = "block";
+	targetSlide.focus();
 	lightboxContent.setAttribute("data-currentId", targetSlide.id);
 }
 
-//setInterval(() => showSlide(1), 3000);
-
 document.addEventListener("keydown", function(e) {
-	if (e.key === "ArrowRight") {
+	const lightbox = document.getElementById("lightbox-modal");
+	const video = lightbox.querySelector("video");
+
+	switch (e.key) {
+	case "ArrowRight":
 		showSlide(1);
-	} else if (e.key === "ArrowLeft") {
+		break;
+
+	case "ArrowLeft":
 		showSlide(-1);
-	} else if (e.key === "Escape") {
+		break;
+
+	case "Escape":
 		closeLightbox();
+		closeModal();
+		break;
+
+	case "ArrowDown":
+		lightbox.scrollBy(0, 50);
+		break;
+
+	case "ArrowUp":
+		lightbox.scrollBy(0, -50);
+		break;
+
+	case "Enter":
+		if (video) {
+			video.play().then();
+			video.focus();
+		}
+		break;
+
+	default:
+		break;
 	};
 });

@@ -28,7 +28,21 @@ class VideoMedia {
 	}
 
 	get media() {
-		return `<video height="300" width="350"><source src=assets/photographers/${this.name}/${this._media} type=video/mp4></video>`;
+		return `<video height="300" width="350"> 
+					Votre navigateur ne permet pas de lire les vidéos.
+					Mais vous pouvez toujours
+					<a href=assets/photographers/${this.name}/${this._media} title="Télécharger la vidéo">la télécharger</a> !
+					<source src=assets/photographers/${this.name}/${this._media} type=video/mp4>
+   				</video>`;
+	}
+
+	get mediaWithControls() {
+		return `<video height="300" width="350" controls>
+					Votre navigateur ne permet pas de lire les vidéos.
+					Mais vous pouvez toujours
+					<a href=assets/photographers/${this.name}/${this._media} title="Télécharger la vidéo">la télécharger</a> !
+					<source src=assets/photographers/${this.name}/${this._media} type=video/mp4>
+				</video>`;
 	}
 
 	get likes() {

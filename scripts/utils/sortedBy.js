@@ -1,6 +1,6 @@
 function toggleDropdown() {
-	const dropdownContent = document.querySelector(".dropdown-content");
 	const button = document.getElementById("myDropdown");
+	const dropdownContent = document.querySelector(".dropdown-content");
 
 	dropdownContent.classList.toggle("show");
 
@@ -35,12 +35,12 @@ function sortByTitle(media) {
 	});
 }
 
-function sortMedia(filter, media) {
+function sortMedia(option, media) {
 	let articles;
 
-	if(filter === "Popularité") articles = sortByPopularity(media);
-	if(filter === "Date")  articles = sortByDate(media);
-	if (filter === "Titre") articles = sortByTitle(media);
+	if (option === "Popularité") articles = sortByPopularity(media);
+	if (option === "Date")  articles = sortByDate(media);
+	if (option === "Titre") articles = sortByTitle(media);
 
 	const mediaSection = document.querySelector(".media-section");
 	mediaSection.innerHTML = "";
