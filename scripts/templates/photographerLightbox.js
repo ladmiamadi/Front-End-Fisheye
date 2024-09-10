@@ -53,7 +53,7 @@ function getPhotographerLightboxDOM(media) {
 			slide.role = "listitem";
 			slide.setAttribute("aria-labelledby", "mediaTitle");
 
-			const title = document.createElement("h3");
+			const title = document.createElement("h2");
 			title.textContent = item.title;
 			title.id = "mediaTitle";
 

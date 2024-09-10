@@ -10,9 +10,7 @@
   </head>
   <body>
     <header role="banner">
-        <h1 aria-label="Fisheye">
-            <a href="index.html" title="Page d'accueil"><img src="assets/images/logo.png" class="logo"  alt="Logo Fisheye"/></a>
-        </h1>
+        <a href="index.html" title="Page d'accueil"><img src="assets/images/logo.png" class="logo"  alt="Logo Fisheye"/></a>
     </header>
     <main aria-hidden="false" id="photographerMainSection">
       <div class="photograph-header" role="heading" aria-level="2">
@@ -24,32 +22,46 @@
         <div class="modal" aria-labelledby="contactFormTitle" role="group">
             <header>
                 <h2 id="contactFormTitle">Contactez-moi</h2>
-                <img src="assets/icons/close.svg" onclick="closeModal()"
+                <img src="assets/icons/close.svg"
                      alt="Fermer le formulaire"
-                     role="button" aria-label="Fermer"
+                     role="button"
+                     aria-label="Fermer"
                      id="closeModalContact"
+                     onclick="closeModal()"
                 />
             </header>
 				<form id="contact-form">
 					<div aria-labelledby="first">
-						<label for="first">Prénom</label>
-						<input type="text" id="first" name="first" required aria-required="true" placeholder="Votre prénom"/>
+						<label for="first" id="firstLabel">Prénom</label>
+						<input type="text" id="first" name="first" required
+                               aria-required="true"
+                               placeholder="Votre prénom"
+                               aria-labelledby="firstLabel"
+                        />
 					</div>
                   <div aria-labelledby="last">
-                    <label for="last">Nom</label>
-                    <input type="text" id="last" name="last" required aria-required="true" placeholder="Votre nom"/>
+                    <label for="last" id="lastLabel">Nom</label>
+                    <input type="text" id="last" name="last" required aria-required="true"
+                           placeholder="Votre nom"
+                           aria-labelledby="lastLabel"
+                    />
                   </div>
                   <div aria-labelledby="email">
-                      <label for="email">Email</label>
+                      <label for="email" id="emailLabel">Email</label>
                       <input type="email" id="email" name="email" required aria-required="true"
                              placeholder="jhondoe@gmail.com"
                              aria-describedby="email-format"
+                             aria-labelledby="emailLabel"
                       />
                       <span id="email-format" class="hidden">jhondoe@gmail.com</span>
                   </div>
-                  <div aria-labelledby="message">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required aria-required="true"></textarea>
+                  <div aria-labelledby="messageLabel">
+                    <label for="message" id="messageLabel">Message</label>
+                    <textarea id="message" name="message"
+                              required aria-required="true"
+                              aria-labelledby="messageLabel"
+                              placeholder="Votre message">
+                    </textarea>
                   </div>
                     <button class="contact_button">Envoyer</button>
 				</form>
@@ -65,6 +77,7 @@
     <script src="/scripts/utils/lightbox.js"></script>
     <script src="/scripts/utils/sortedBy.js"></script>
     <script src="/scripts/utils/likes.js"></script>
+    <script src="/scripts/utils/keyBoardNavigation.js"></script>
     <script src="/scripts/factories/MediaFactory.js"></script>
     <script src="/scripts/models/ImageMedia.js"></script>
     <script src="/scripts/models/VideoMedia.js"></script>

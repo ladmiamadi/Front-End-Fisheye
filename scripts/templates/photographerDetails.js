@@ -9,11 +9,11 @@ function photographerDetailsTemplate(data) {
 		const div = document.createElement( "div");
 		div.ariaLabel = "Informations sur le photographe";
 
-		const h2 = document.createElement( "h2");
+		const h2 = document.createElement( "h1");
 		h2.textContent = name;
 		h2.classList.add("photographer-name");
 
-		const h3 = document.createElement("h3");
+		const h3 = document.createElement("h2");
 		h3.textContent = address;
 		h3.classList.add("photographer-location");
 

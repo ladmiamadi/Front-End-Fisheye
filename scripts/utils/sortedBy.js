@@ -5,8 +5,10 @@ function toggleDropdown() {
 	dropdownContent.classList.toggle("show");
 
 	if (dropdownContent.classList.contains("show")) {
+		dropdownContent.ariaExpanded = "true";
 		button.innerHTML = button.innerHTML.replace("fa-angle-down", "fa-angle-up");
 	} else {
+		dropdownContent.ariaExpanded = "false";
 		button.innerHTML = button.innerHTML.replace("fa-angle-up", "fa-angle-down");
 	}
 }

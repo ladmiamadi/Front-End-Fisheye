@@ -9,6 +9,7 @@ function photographerTemplate(data) {
 	function getUserCardDOM() {
 		const article = document.createElement( "article" );
 		article.role = "listitem";
+		article.setAttribute("aria-labelledby", "photographerName");
 
 		const img = document.createElement( "img");
 		img.classList.add("photographer-card-img");
@@ -17,6 +18,7 @@ function photographerTemplate(data) {
 
 		const h2 = document.createElement( "h2");
 		h2.textContent = name;
+		h2.id = "photographerName";
 
 		const h3 = document.createElement("h3");
 		h3.textContent = address;
@@ -31,12 +33,12 @@ function photographerTemplate(data) {
 
 		const a = document.createElement("a");
 		a.href = href;
-		a.ariaLabel = "Détails du photographe";
 		a.append(img, h2, h3, description, p);
 
 		article.appendChild(a);
 
 		return (article);
 	}
+
 	return { name, picture, id, address, tagline, pricing, getUserCardDOM };
 }

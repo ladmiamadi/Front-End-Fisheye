@@ -5,9 +5,6 @@ function displayModal() {
 	const modal = document.getElementById("contact_modal");
 	modal.setAttribute("aria-hidden", "false");
 
-	const firstInput = document.getElementById("first");
-	firstInput.focus();
-
 	const photographerName = document.querySelector(".photographer-name").textContent;
 
 	let header = modal.querySelector("header");
@@ -25,14 +22,17 @@ function displayModal() {
 
 	modal.style.display = "block";
 	document.body.classList.add("no-scroll");
+
+	const firstInput = document.getElementById("first");
+	firstInput.focus();
 }
 
 function closeModal() {
 	const mainSection = document.getElementById("photographerMainSection");
 	mainSection.setAttribute("aria-hidden", "false");
 
-	const openModal = document.getElementById("openModalContact");
-	openModal.focus();
+	//const openModal = document.getElementById("openModalContact");
+	//openModal.focus();
 
 	const modal = document.getElementById("contact_modal");
 	modal.setAttribute("aria-hidden", "true");

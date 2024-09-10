@@ -6,6 +6,7 @@ function getPhotographerMediaDOM(media) {
 	const a = document.createElement("a");
 	a.role = "button";
 	a.setAttribute("href", "#");
+	a.ariaLabel = "Vue rapprochée de l'image";
 	a.onclick = () => openLightbox(media.id);
 
 	a.innerHTML = media.media;
@@ -13,8 +14,10 @@ function getPhotographerMediaDOM(media) {
 	const div = document.createElement("div");
 	div.classList.add("media-body");
 
-	const h3 = document.createElement("h3");
-	h3.textContent = media.title;
+	const h2 = document.createElement("h2");
+	h2.textContent = media.title;
+	h2.id = media.title + media.id;
+	div.setAttribute("aria-labelledby", h2.id);
 
 	const likes = document.createElement("div");
 	likes.classList.add("likes");
@@ -23,6 +26,9 @@ function getPhotographerMediaDOM(media) {
 	heart.classList.add("heart");
 	heart.innerHTML = "<i class=\"fa-solid fa-heart\"></i>";
 	heart.role = "button";
+	heart.tabIndex = 0;
+	heart.onkeydown = (event) => likeMediaKeyboard(media, event);
+	heart.ariaPressed = "false";
 	heart.ariaLabel = "Aimer cette photographie";
 	heart.onclick = () => incrementLike(media);
 
@@ -32,9 +38,11 @@ function getPhotographerMediaDOM(media) {
 	likeCount.id = "like" + media.id;
 	likeCount.innerText = media.likes;
 
+	likes.setAttribute("aria-labelledby", likeCount.id);
+
 	likes.append(likeCount, heart);
 
-	div.appendChild(h3);
+	div.appendChild(h2);
 	div.appendChild(likes);
 	article.append(a, div);
 

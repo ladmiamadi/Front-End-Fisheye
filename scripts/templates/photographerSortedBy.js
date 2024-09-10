@@ -4,7 +4,7 @@ function sortedByDOM (media) {
 	div.setAttribute("aria-labelledby", "sorted-by");
 	div.id = "sortedByDiv";
 
-	const h4 = document.createElement("h4");
+	const h4 = document.createElement("h3");
 	h4.textContent = "Trier par";
 	h4.id = "sorted-by";
 
