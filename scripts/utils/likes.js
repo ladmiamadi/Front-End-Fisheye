@@ -17,7 +17,7 @@ function updatePhotographerLikesCounter() {
 		totalLikesElement.innerText = totalLikes.toString();
 	}
 
-	totalLikesElement.setAttribute('aria-label', `Nombre total de j'aime ${totalLikes}`);
+	totalLikesElement.setAttribute("aria-label", `Nombre total de j'aime ${totalLikes}`);
 }
 
 function incrementLike(media) {

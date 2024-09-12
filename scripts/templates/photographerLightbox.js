@@ -3,13 +3,15 @@ function getPhotographerLightboxDOM(media) {
 		const div = document.createElement("div");
 		div.id = "lightbox-modal";
 		div.ariaHidden = "true";
-		div.setAttribute("role", "dialog");
-		div.setAttribute("aria-label", "Galerie d'images");
+		div.setAttribute("role", "region");
+		div.setAttribute("aria-roledescription", "Galerie d'images");
+		div.setAttribute("aria-live", "polite");
+		div.setAttribute("aria-label", "galerie d'images");
 
 		const close = document.createElement("span");
-		close.setAttribute('aria-label', 'Fermer le carrousel');
-		close.setAttribute('role', 'button');
-		close.setAttribute('tabindex', '0');
+		close.setAttribute("aria-label", "Fermer le carrousel");
+		close.setAttribute("role", "button");
+		close.setAttribute("tabindex", "0");
 
 
 		close.innerHTML = "<i class=\"fa-solid fa-x\" title='Fermer le carrousel'></i>";
@@ -29,9 +31,11 @@ function getPhotographerLightboxDOM(media) {
 		prev.onclick = () => showSlide(-1);
 
 		next.setAttribute("aria-label", "Suivant");
+		next.setAttribute("aria-controls", "lightbox-modal");
 		next.setAttribute("role", "button");
 		prev.setAttribute("aria-label", "Précédent");
 		prev.setAttribute("role", "button");
+		next.setAttribute("aria-controls", "lightbox-modal");
 
 		next.focus();
 		next.tabIndex = 0;
@@ -51,7 +55,8 @@ function getPhotographerLightboxDOM(media) {
 		slides.id = "mediaSlidesSection";
 		div.classList.add("slides");
 		div.role = "list";
-		div.ariaLabel = "Les photographies";
+		div.ariaLabel = "galerie d'images";
+		div.setAttribute("role", "group");
 
 		media.forEach(item => {
 			const slide = document.createElement("div");

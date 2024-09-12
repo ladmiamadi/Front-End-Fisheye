@@ -16,15 +16,13 @@ function sortedByDOM(media) {
 
 	const select = document.createElement("select");
 	select.id = "sortSelect";
-	select.tabIndex = 0;
-	select.ariaLabel = "Trier par";
 	select.classList.add("sort-select");
 
 	let defaultOption = "Popularité";
 	const options = ["Popularité", "Titre", "Date"];
 
 	function updateSelectOptions() {
-		select.innerHTML = '';
+		select.innerHTML = "";
 
 		options.forEach(optionText => {
 			const option = document.createElement("option");
@@ -45,22 +43,22 @@ function sortedByDOM(media) {
 
 	sortMedia(defaultOption, media);
 
-	select.addEventListener('change', (event) => {
+	select.addEventListener("change", (event) => {
 		defaultOption = event.target.value;
 		sortMedia(defaultOption, media);
 		updateSelectOptions();
-		span.querySelector('.arrow').classList.replace('fa-angle-up', 'fa-angle-down');
+		span.querySelector(".arrow").classList.replace("fa-angle-up", "fa-angle-down");
 	});
 
-	select.addEventListener('click', function () {
+	select.addEventListener("click", function () {
 		span.innerHTML = "<i class=\"fa-solid fa-angle-up arrow\" aria-hidden=\"true\"></i>";
 	});
 
-	select.addEventListener('change', function () {
+	select.addEventListener("change", function () {
 		span.innerHTML = "<i class=\"fa-solid fa-angle-down arrow\" aria-hidden=\"true\"></i>";
 	});
 
-	select.addEventListener('blur', function () {
+	select.addEventListener("blur", function () {
 		span.innerHTML = "<i class=\"fa-solid fa-angle-down arrow\" aria-hidden=\"true\"></i>";
 	});
 

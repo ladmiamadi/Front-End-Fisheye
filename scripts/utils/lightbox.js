@@ -4,13 +4,12 @@ function openLightbox(id) {
 
 	const lightbox = document.getElementById("lightbox-modal");
 	lightbox.style.display = "block";
-	lightbox.focus();
-
 	lightbox.setAttribute("aria-hidden", "false");
 	document.querySelector(".lightbox-content").setAttribute("data-currentId", id);
 
 	document.body.classList.add("no-scroll");
-	document.querySelector(".next").focus();
+
+	lightbox.focus();
 
 	showSlide(0);
 }
@@ -33,7 +32,6 @@ function showSlide(n) {
 	const currentId = lightboxContent.getAttribute("data-currentId");
 	const currentSlide = document.getElementById(currentId);
 
-	// Masquer tous les slides
 	slides.forEach(slide => slide.style.display = "none");
 
 	// Définir le slide suivant ou précédent ou boucler
@@ -51,4 +49,3 @@ function showSlide(n) {
 	targetSlide.focus();
 	lightboxContent.setAttribute("data-currentId", targetSlide.id);
 }
-
