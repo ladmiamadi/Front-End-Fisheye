@@ -17,36 +17,25 @@ async function getPhotographerMedia(id, name) {
 		.map(media => new MediaFactory(media, name));
 }
 
-function getPhotographerLikes(media) {
-	return media.reduce((acc, item) => {
-		return acc + item.likes;
-	}, 0);
-}
-
 async function displayPhotographerDetailsData(photographer) {
 	const photographerDetailsSection = document.querySelector(".photograph-header");
-	const photographerMainSection = document.querySelector("main");
 	const mediaSection = document.querySelector(".media-section");
+	const photographerMainSection = document.querySelector("main");
 	const photographerModel = photographerDetailsTemplate(photographer);
 	const photographerCardDOM = photographerModel.getPhotographerDetailsCardDOM();
 
 	const media = await getPhotographerMedia(photographer.id, photographer.name);
-
 	const sortedBy = sortedByDOM(media);
-
 	const likesCounter = getPhotographerLikes(media);
-
-	const div = document.createElement("div");
-	div.classList.add("media.section");
-	div.role = "list";
 
 	console.log(media);
 
-	photographerDetailsSection.appendChild(photographerCardDOM.div);
-	photographerDetailsSection.appendChild(photographerCardDOM.img);
-	photographerMainSection.appendChild(sortedBy);
+	photographerDetailsSection.prepend(photographerCardDOM.div);
+	photographerDetailsSection.append(photographerCardDOM.img);
 
-	photographerMainSection.appendChild(getPhotographerLikesDOM(likesCounter, photographer.price));
+	photographerMainSection.insertBefore(sortedBy, mediaSection);
+
+	photographerMainSection.append(getPhotographerLikesDOM(likesCounter, photographer.price));
 }
 
 async function initPhotographer() {

@@ -1,3 +1,9 @@
+function getPhotographerLikes(media) {
+	return media.reduce((acc, item) => {
+		return acc + item.likes;
+	}, 0);
+}
+
 function updatePhotographerLikesCounter() {
 	const likes = document.querySelectorAll(".like-count");
 

@@ -1,18 +1,3 @@
-function toggleDropdown() {
-	const button = document.getElementById("myDropdown");
-	const dropdownContent = document.querySelector(".dropdown-content");
-
-	dropdownContent.classList.toggle("show");
-
-	if (dropdownContent.classList.contains("show")) {
-		dropdownContent.ariaExpanded = "true";
-		button.innerHTML = button.innerHTML.replace("fa-angle-down", "fa-angle-up");
-	} else {
-		dropdownContent.ariaExpanded = "false";
-		button.innerHTML = button.innerHTML.replace("fa-angle-up", "fa-angle-down");
-	}
-}
-
 function sortByPopularity(media) {
 	return media.sort((a, b) => b.likes - a.likes);
 }
@@ -53,10 +38,3 @@ function sortMedia(option, media) {
 
 	mediaSection.appendChild(getPhotographerLightboxDOM(media));
 }
-
-window.onclick = function(event) {
-	if (!event.target.matches(".drop-button")) {
-		const dropdownContent = document.querySelector(".dropdown-content");
-		dropdownContent.classList.contains("show") ? dropdownContent.classList.remove("show") : "";
-	}
-};

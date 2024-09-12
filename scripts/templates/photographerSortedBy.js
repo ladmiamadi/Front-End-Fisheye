@@ -1,62 +1,66 @@
-function sortedByDOM (media) {
+function sortedByDOM(media) {
 	const div = document.createElement("div");
 	div.classList.add("sorted-by");
-	div.setAttribute("aria-labelledby", "sorted-by");
-	div.id = "sortedByDiv";
+	div.id = "sortedBy";
 
-	const h4 = document.createElement("h3");
-	h4.textContent = "Trier par";
-	h4.id = "sorted-by";
+	const h3 = document.createElement("h3");
+	h3.textContent = "Trier par";
+	h3.id = "sorted-by";
+	h3.tabIndex = 0;
+	div.appendChild(h3);
 
-	const dropdown = document.createElement("div");
-	dropdown.classList.add("dropdown");
+	const span = document.createElement("span");
+	span.id = "arrowDown";
+	span.innerHTML = "<i class=\"fa-solid fa-angle-down arrow\" aria-hidden=\"true\"></i>";
+	div.appendChild(span);
 
-	const button = document.createElement("button");
-	button.classList.add("drop-button");
-	button.id = "myDropdown";
-	button.role = "button";
-	button.ariaHasPopup = "listbox";
-	button.ariaExpanded = "false";
-	button.setAttribute("aria-controls", "sortedByDiv");
-	button.onclick = toggleDropdown;
+	const select = document.createElement("select");
+	select.id = "sortSelect";
+	select.classList.add("sort-select");
 
-	const dropdownContent = document.createElement("div");
-	div.setAttribute("aria-labelledby", "myDropdown");
-	div.role = "listbox";
-	dropdownContent.classList.add("dropdown-content");
+	let defaultOption = "Popularité";
+	const options = ["Popularité", "Titre", "Date"];
 
-	let selectedOption= "Popularité";
-	sortMedia("Popularité", media);
+	function updateSelectOptions() {
+		select.innerHTML = '';
 
-	const filter = ["Popularité", "Date", "Titre"];
+		options.forEach(optionText => {
+			const option = document.createElement("option");
+			option.value = optionText;
+			option.textContent = optionText;
 
-	function updateDropdown(selectedText) {
-		button.innerHTML = `${selectedText} <i class="fa-solid fa-angle-down arrow" aria-hidden="true"></i>`;
-		button.role = "option";
-		button.ariaSelected = "true";
-
-		dropdownContent.innerHTML = "";
-
-		filter.forEach(option => {
-			if (option !== selectedText) {
-				const link = document.createElement("a");
-				link.textContent = option;
-				link.href = "#";
-				link.role = "option";
-				link.onclick = () => {
-					sortMedia(option, media);
-					updateDropdown(option);
-				};
-
-				dropdownContent.appendChild(link);
+			if (optionText === defaultOption) {
+				option.selected = true;
+				option.hidden = true;
 			}
+
+			select.appendChild(option);
 		});
 	}
 
-	updateDropdown(selectedOption);
+	updateSelectOptions();
+	div.appendChild(select);
 
-	dropdown.append(button, dropdownContent);
-	div.append(h4, dropdown);
+	sortMedia(defaultOption, media);
+
+	select.addEventListener('change', (event) => {
+		defaultOption = event.target.value;
+		sortMedia(defaultOption, media);
+		updateSelectOptions();
+		span.querySelector('.arrow').classList.replace('fa-angle-up', 'fa-angle-down');
+	});
+
+	select.addEventListener('click', function () {
+		span.innerHTML = "<i class=\"fa-solid fa-angle-up arrow\" aria-hidden=\"true\"></i>";
+	});
+
+	select.addEventListener('change', function () {
+		span.innerHTML = "<i class=\"fa-solid fa-angle-down arrow\" aria-hidden=\"true\"></i>";
+	});
+
+	select.addEventListener('blur', function () {
+		span.innerHTML = "<i class=\"fa-solid fa-angle-down arrow\" aria-hidden=\"true\"></i>";
+	});
 
 	return div;
 }

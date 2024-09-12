@@ -32,6 +32,7 @@ function photographerTemplate(data) {
 		p.classList.add("pricing");
 
 		const a = document.createElement("a");
+		a.ariaLabel = "Afficher les informations sur le photographe " + name;
 		a.href = href;
 		a.append(img, h2, h3, description, p);
 

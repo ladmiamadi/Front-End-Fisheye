@@ -3,12 +3,16 @@ function getPhotographerLightboxDOM(media) {
 		const div = document.createElement("div");
 		div.id = "lightbox-modal";
 		div.ariaHidden = "true";
-		div.role = "dialog";
-		div.ariaLabel = "Carrousel des photographies";
+		div.setAttribute("role", "dialog");
+		div.setAttribute("aria-label", "Galerie d'images");
 
 		const close = document.createElement("span");
-		close.ariaLabel = "Fermer";
-		close.innerHTML = "<i class=\"fa-solid fa-x\" title='Fermer le carousel'></i>";
+		close.setAttribute('aria-label', 'Fermer le carrousel');
+		close.setAttribute('role', 'button');
+		close.setAttribute('tabindex', '0');
+
+
+		close.innerHTML = "<i class=\"fa-solid fa-x\" title='Fermer le carrousel'></i>";
 		close.classList.add("close-lightbox");
 		close.onclick = closeLightbox;
 
@@ -35,7 +39,7 @@ function getPhotographerLightboxDOM(media) {
 
 		lightboxContent.setAttribute("data-currentId", media[0].id);
 
-		div.append(lightboxContent);
+		div.appendChild(lightboxContent);
 
 		lightboxContent.appendChild(prev);
 		lightboxContent.appendChild(close);
@@ -65,6 +69,8 @@ function getPhotographerLightboxDOM(media) {
 
 		lightboxContent.appendChild(slides);
 		lightboxContent.appendChild(next);
+
+		close.focus();
 
 		return div;
 	}

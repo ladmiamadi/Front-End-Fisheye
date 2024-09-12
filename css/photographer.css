@@ -80,61 +80,48 @@ main {
     font-size: 16px;
 }
 
-/************** dropdown sortedby **/
-.drop-button {
+/************** select sortedby **/
+.sort-select {
     background-color: #901C1C;
     color: white;
-    padding: 16px;
+    padding: 23px 18px 23px 20px;
     font-size: 18px;
-    border: none;
+    border: 1px solid #901C1C;
     border-radius: 5px;
     cursor: pointer;
     width: 170px;
     text-align: left;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.dropdown {
     position: relative;
-    display: inline-block;
-    border-radius: 5px;
-    width: 170px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
-.dropdown-content {
-    font-size: 18px;
-    display: none;
-    position: absolute;
-    background-color: #901C1C;
-    width: 100%;
-    z-index: 1;
-    top: 50px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+.sort-select option {
+    appearance: none !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
 }
 
-.dropdown-content a {
-    color: white;
-    padding: 12px 5px;
-    text-decoration: none;
-    display: block;
-    margin: 0 10px;
-}
-
-.dropdown-content a:nth-child(2n + 1) {
-    border-bottom: 1px solid #FFFFFF;
-    border-top: 1px solid #FFFFFF;
-}
-
-.dropdown-content a:hover, .drop-button:hover, .drop-button:hover .fa-angle-down,
-.drop-button:hover .fa-angle-up {
+.sort-select option:hover {
+    background-color: #901C1C  !important;
     color: #DB8876;
 }
 
-.show {
-    display:block;
+#arrowDown {
+    position: absolute;
+    left: 330px;
+    color: #FFFFFF;
+    z-index: 999;
+    font-size: 32px;
+    align-items: center;
+    display: flex;
 }
 
 /************************************/

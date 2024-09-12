@@ -9,6 +9,8 @@ function openLightbox(id) {
 
 	document.body.classList.add("no-scroll");
 
+	lightbox.focus();
+
 	showSlide(0);
 }
 
@@ -21,6 +23,7 @@ function closeLightbox() {
 	lightbox.setAttribute("aria-hidden", "true");
 
 	document.body.classList.remove("no-scroll");
+	mainSection.focus();
 }
 
 function showSlide(n) {
