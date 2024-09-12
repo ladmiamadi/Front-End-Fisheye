@@ -4,11 +4,15 @@ function getPhotographerLikesDOM(likes, price) {
 	div.ariaLabel = "Encart pour les j'aime et le prix journalier";
 
 	const divCounter = document.createElement("div");
-	divCounter.ariaLabel = "Nombre total des j'aime";
+	divCounter.ariaLabel = "Nombre total de j'aime";
+	div.id = "likeCounter";
 
 	const likesCounter = document.createElement("span");
 	likesCounter.innerText = likes;
 	likesCounter.classList.add("total-likes");
+	likesCounter.setAttribute("aria-label", "Nombre total de j'aime");
+	likesCounter.setAttribute("aria-live", "polite");
+	likesCounter.tabIndex = 0;
 
 	const priceSpan = document.createElement("span");
 	priceSpan.innerHTML = "<i class=\"fa-solid fa-heart likes-counter\"></i>";
@@ -16,10 +20,11 @@ function getPhotographerLikesDOM(likes, price) {
 
 	divCounter.append(likesCounter, priceSpan);
 
-	const photographerPrice = document.createElement("span");
-	photographerPrice.ariaLabel = "Prix journalier";
+	const photographerPrice = document.createElement("p");
+	photographerPrice.setAttribute("aria-label", "Prix journalier");
 	photographerPrice.classList.add("photographer-price");
 	photographerPrice.innerHTML = `${price}€/jour`;
+	photographerPrice.tabIndex = 0;
 
 	div.append(divCounter, photographerPrice);
 

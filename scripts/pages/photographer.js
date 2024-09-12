@@ -35,7 +35,7 @@ async function displayPhotographerDetailsData(photographer) {
 
 	photographerMainSection.insertBefore(sortedBy, mediaSection);
 
-	photographerMainSection.append(getPhotographerLikesDOM(likesCounter, photographer.price));
+	photographerMainSection.insertBefore(getPhotographerLikesDOM(likesCounter, photographer.price), sortedBy);
 }
 
 async function initPhotographer() {

@@ -28,10 +28,13 @@ function getPhotographerLightboxDOM(media) {
 		next.onclick = () => showSlide(1);
 		prev.onclick = () => showSlide(-1);
 
-		next.ariaLabel = "Suivant";
-		next.role = "button";
-		prev.ariaLabel = "Précédent";
-		prev.role = "button";
+		next.setAttribute("aria-label", "Suivant");
+		next.setAttribute("role", "button");
+		prev.setAttribute("aria-label", "Précédent");
+		prev.setAttribute("role", "button");
+
+		next.focus();
+		next.tabIndex = 0;
 
 		const lightboxContent = document.createElement("div");
 		lightboxContent.classList.add("lightbox-content");
@@ -55,7 +58,7 @@ function getPhotographerLightboxDOM(media) {
 			slide.classList.add("slide");
 			slide.id = item.id;
 			slide.role = "listitem";
-			slide.setAttribute("aria-labelledby", "mediaTitle");
+			slide.setAttribute("aria-label", media.title);
 
 			const title = document.createElement("h2");
 			title.textContent = item.title;

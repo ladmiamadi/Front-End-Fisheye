@@ -4,12 +4,13 @@ function openLightbox(id) {
 
 	const lightbox = document.getElementById("lightbox-modal");
 	lightbox.style.display = "block";
+	lightbox.focus();
+
 	lightbox.setAttribute("aria-hidden", "false");
 	document.querySelector(".lightbox-content").setAttribute("data-currentId", id);
 
 	document.body.classList.add("no-scroll");
-
-	lightbox.focus();
+	document.querySelector(".next").focus();
 
 	showSlide(0);
 }
@@ -50,3 +51,4 @@ function showSlide(n) {
 	targetSlide.focus();
 	lightboxContent.setAttribute("data-currentId", targetSlide.id);
 }
+

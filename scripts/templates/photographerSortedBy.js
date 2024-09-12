@@ -16,6 +16,8 @@ function sortedByDOM(media) {
 
 	const select = document.createElement("select");
 	select.id = "sortSelect";
+	select.tabIndex = 0;
+	select.ariaLabel = "Trier par";
 	select.classList.add("sort-select");
 
 	let defaultOption = "Popularité";
