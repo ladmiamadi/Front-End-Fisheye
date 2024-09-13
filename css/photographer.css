@@ -118,7 +118,7 @@ main {
     position: absolute;
     left: 330px;
     color: #FFFFFF;
-    z-index: 999;
+    z-index: 3;
     font-size: 32px;
     align-items: center;
     display: flex;
